@@ -1,13 +1,45 @@
+import { NavLink } from "react-router-dom";
+
 function Sidebar() {
   return (
     <aside>
-      <h2>InternTrack</h2>
-
       <nav>
-        <p>Dashboard</p>
-        <p>Applications</p>
-        <p>Saved Jobs</p>
-        <p>Profile</p>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "font-bold" : ""
+          }
+        >
+          Dashboard
+        </NavLink>
+
+        <NavLink
+          to="/applications"
+          className={({ isActive }) =>
+            isActive ? "font-bold" : ""
+          }
+        >
+          Applications
+        </NavLink>
+
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            isActive ? "font-bold" : ""
+          }
+        >
+          Profile
+        </NavLink>
+
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            isActive ? "font-bold" : ""
+          }
+        >
+          Settings
+        </NavLink>
+
         <p>Logout</p>
       </nav>
     </aside>

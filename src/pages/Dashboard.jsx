@@ -1,3 +1,48 @@
+import ApplicationCard from "../components/ApplicationCard";
+
+const applications = [
+  {
+    id: 1,
+    company: "Google",
+    role: "Software Engineering Intern",
+    location: "Bangalore",
+    status: "Applied",
+    date: "20 Aug 2026",
+  },
+  {
+    id: 2,
+    company: "Microsoft",
+    role: "Software Engineer Intern",
+    location: "Hyderabad",
+    status: "Interview",
+    date: "18 Aug 2026",
+  },
+  {
+    id: 3,
+    company: "Amazon",
+    role: "Frontend Developer Intern",
+    location: "Bangalore",
+    status: "Applied",
+    date: "15 Aug 2026",
+  },
+  {
+    id: 4,
+    company: "Flipkart",
+    role: "Software Developer Intern",
+    location: "Bangalore",
+    status: "Rejected",
+    date: "12 Aug 2026",
+  },
+  {
+    id: 5,
+    company: "TCS",
+    role: "System Engineer Intern",
+    location: "Delhi",
+    status: "Applied",
+    date: "10 Aug 2026",
+  },
+];
+
 function Dashboard() {
   return (
     <>
@@ -7,30 +52,9 @@ function Dashboard() {
       <section>
         <h2>Recent Applications</h2>
 
-        <div>
-          <h3>Amazon</h3>
-          <p>Frontend Developer Intern</p>
-        </div>
-
-        <div>
-          <h3>Microsoft</h3>
-          <p>Software Engineer Intern</p>
-        </div>
-
-        <div>
-          <h3>Google</h3>
-          <p>Software Engineer Intern</p>
-        </div>
-
-        <div>
-          <h3>TCS</h3>
-          <p>System Engineer Intern</p>
-        </div>
-
-        <div>
-          <h3>Flipkart</h3>
-          <p>Software Developer Intern</p>
-        </div>
+        {applications.map((application) => (
+          <ApplicationCard key={application.id} application={application} />
+        ))}
       </section>
     </>
   );
