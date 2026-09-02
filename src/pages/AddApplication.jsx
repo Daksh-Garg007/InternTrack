@@ -1,6 +1,9 @@
 import { useState } from "react";
+import useApplications from "../hooks/useApplications";
 
 function AddApplication() {
+  const { addApplication } = useApplications();
+
   const [formData, setFormData] = useState({
     company: "",
     role: "",
@@ -10,7 +13,15 @@ function AddApplication() {
     url: "",
     notes: "",
   });
-  const [applications, setApplications] = useState([]);
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -30,13 +41,21 @@ function AddApplication() {
       return;
     }
 
-    setApplications([...applications, formData]);
-  }
-
-  function handleChange(e) {
-    setFormData({
+    addApplication({
       ...formData,
-      [e.target.name]: e.target.value,
+      id: Date.now(),
+    });
+
+    alert("Application added successfully!");
+
+    setFormData({
+      company: "",
+      role: "",
+      location: "",
+      date: "",
+      status: "Applied",
+      url: "",
+      notes: "",
     });
   }
 
@@ -47,6 +66,7 @@ function AddApplication() {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Company Name</label>
+
           <input
             type="text"
             name="company"
@@ -59,6 +79,7 @@ function AddApplication() {
 
         <div>
           <label>Job Title</label>
+
           <input
             type="text"
             name="role"
@@ -71,6 +92,7 @@ function AddApplication() {
 
         <div>
           <label>Location</label>
+
           <input
             type="text"
             name="location"
@@ -82,6 +104,7 @@ function AddApplication() {
 
         <div>
           <label>Application Date</label>
+
           <input
             type="date"
             name="date"
@@ -92,6 +115,7 @@ function AddApplication() {
 
         <div>
           <label>Status</label>
+
           <input
             type="text"
             name="status"
@@ -103,6 +127,7 @@ function AddApplication() {
 
         <div>
           <label>Job URL</label>
+
           <input
             type="url"
             name="url"
@@ -114,6 +139,7 @@ function AddApplication() {
 
         <div>
           <label>Notes</label>
+
           <textarea
             name="notes"
             placeholder="Notes"
@@ -122,7 +148,9 @@ function AddApplication() {
           ></textarea>
         </div>
 
-        <button type="submit">Save Application</button>
+        <button type="submit">
+          Save Application
+        </button>
       </form>
     </div>
   );
