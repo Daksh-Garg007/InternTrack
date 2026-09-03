@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Applications from "./pages/Applications";
 import ApplicationDetails from "./pages/ApplicationDetails";
 import AddApplication from "./pages/AddApplication";
+import EditApplication from "./pages/EditApplication";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 
@@ -15,12 +16,11 @@ function App() {
 
         <Route path="/applications" element={<Applications />} />
 
-        <Route
-          path="/applications/:id"
-          element={<ApplicationDetails />}
-        />
+        <Route path="/applications/:id" element={<ApplicationDetails />} />
 
         <Route path="/add" element={<AddApplication />} />
+
+        <Route path="/applications/:id/edit" element={<EditApplication />} />
 
         <Route path="/settings" element={<Settings />} />
 
