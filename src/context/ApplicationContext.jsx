@@ -1,9 +1,22 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const ApplicationContext = createContext();
 
 function ApplicationProvider({ children }) {
-  const [applications, setApplications] = useState([]);
+  const [applications, setApplications] = useState(() => {
+    const savedApplications = localStorage.getItem("applications");
+
+    return savedApplications
+      ? JSON.parse(savedApplications)
+      : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "applications",
+      JSON.stringify(applications)
+    );
+  }, [applications]);
 
   function addApplication(application) {
     setApplications([
